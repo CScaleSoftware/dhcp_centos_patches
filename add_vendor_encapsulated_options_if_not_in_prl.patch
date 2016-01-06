@@ -1,0 +1,14 @@
+--- a/common/options.c	2015-11-25 08:48:41.234307710 -0500
++++ b/common/options.c	2015-11-25 08:53:24.698173353 -0500
+@@ -689,8 +689,10 @@ cons_options(struct packet *inpacket, st
+ 		 */
+ 		if ((priority_len < PRIORITY_COUNT) &&
+ 		    ((inpacket->packet_type == DHCPDISCOVER) ||
+-		     (inpacket->packet_type == DHCPREQUEST)))
++		     (inpacket->packet_type == DHCPREQUEST))) {
+ 			priority_list[priority_len++] = DHO_SUBNET_MASK;
++			priority_list[priority_len++] = DHO_VENDOR_ENCAPSULATED_OPTIONS;
++		}
+ 	} else {
+ 		/*
+ 		 * First, hardcode some more options that ought to be
